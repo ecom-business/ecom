@@ -9,11 +9,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(cors());
 
-const temp = require('./routers/tempRouter.js');
+const userRouter = require('./routers/userRouter.js');
 
-app.use('/api', (req, res) => {
-	res.send('hello???')
-})
+app.use('/users', userRouter)
 
 app.use('*', (req, res) => {
 	return res

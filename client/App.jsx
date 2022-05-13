@@ -2,6 +2,6 @@ import React from 'react';
 
 export const App = () => {
   return(
-    <div>Testing</div>
+    <div>Home page</div>
   )
 }
