@@ -13,6 +13,9 @@ const userRouter = require('./routers/userRouter.js');
 
 app.use('/users', userRouter)
 
+
+
+
 app.use('*', (req, res) => {
 	return res
 		.status(404)
@@ -33,7 +36,6 @@ app.use((err, req, res, next) => {
 	return res.status(errorObj.status).json(errorObj.message);
   
 });
-
 
 app.listen(PORT, () => {
 	console.log(`Server listening on port: ${PORT}...`)
