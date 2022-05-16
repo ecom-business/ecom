@@ -10,8 +10,10 @@ app.use(express.static(path.join(__dirname, '../dist')));
 app.use(cors());
 
 const userRouter = require('./routers/userRouter.js');
+const itemRouter = require('./routers/itemRoutes.js')
 
 app.use('/users', userRouter)
+app.use('/items', itemRouter)
 
 
 
