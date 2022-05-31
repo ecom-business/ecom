@@ -18,8 +18,8 @@ itemController.getItems = (req, res, next) => {
 			res.locals.items = 'There are no items to display'
 			return next()
 		}else {
-			console.log(result.rows[0])
-			res.locals.items = result.rows[0]
+			console.log('Item controller getItems: ', result.rows)
+			res.locals.items = result.rows
 			return next()
 		}
 	}))

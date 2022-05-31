@@ -4,7 +4,10 @@ const PORT = 3000;
 const app = express();
 const cors = require('cors');
 
+//Middleware 
+// module exports = chunk of codes are modules
 app.use(express.json());
+// lets you view information
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(cors());
@@ -14,8 +17,6 @@ const itemRouter = require('./routers/itemRoutes.js')
 
 app.use('/users', userRouter)
 app.use('/items', itemRouter)
-
-
 
 
 app.use('*', (req, res) => {
