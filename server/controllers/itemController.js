@@ -18,7 +18,6 @@ itemController.getItems = (req, res, next) => {
 			res.locals.items = 'There are no items to display'
 			return next()
 		}else {
-			console.log('Item controller getItems: ', result.rows)
 			res.locals.items = result.rows
 			return next()
 		}
@@ -28,7 +27,7 @@ itemController.getItems = (req, res, next) => {
 itemController.postItem = (req, res, next) => {
 	const { item_name, price, stock } = req.body;
 	const query = `
-	INSERT INTO products (Item_name, price, stock) 
+	INSERT INTO products (item_name, price, stock) 
 	VALUES ($1, $2, $3)
 	`
 
@@ -43,6 +42,29 @@ itemController.postItem = (req, res, next) => {
       })
 		}
 		res.locals.items = 'item has been posted'
+		return next()
+		
+	}))
+}
+
+itemController.deleteItem = (req, res, next) => {
+	const { id } = req.params;
+	const query = `
+	DELETE FROM products 
+	WHERE item_id=($1)
+	`
+	console.log(id)
+	item.query(query, [id], ((err ,result) => {
+		if(err){
+			return next({
+        log: `itemController.deleteItem: ERROR: ${err}`,
+        message: {
+        err: 'Error occurred in itemController.deleteItem. Check server log for more detail',
+        },
+        status: 400,
+      })
+		}
+		res.locals.items = 'item has been deleted'
 		return next()
 		
 	}))

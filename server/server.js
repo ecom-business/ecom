@@ -37,7 +37,6 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign({}, defaultErr, err);
 
 	return res.status(errorObj.status).json(errorObj.message);
-  
 });
 
 app.listen(PORT, () => {

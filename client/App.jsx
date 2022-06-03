@@ -1,11 +1,11 @@
 import React from 'react';
-import Products from './components/Products.jsx'
+import Items from './components/Products/Items.jsx';
 
 export const App = () => {
   return(
     <>
-      <h1>Hello</h1>
-      <Products />
+      <h1>Items to Sell</h1>
+      <Items />
     </>
   )
 }
